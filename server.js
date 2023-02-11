@@ -7,6 +7,8 @@ const express = require('express');
 // Start up an instance of app
 const app = express();
 
+const path = require('path');
+
 /* Dependencies */
 const bodyParser = require('body-parser')
 
@@ -31,6 +33,10 @@ function listening(){
     console.log(`running on localhost: ${port}`);
 }
 
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname+'/website/index.html'));
+});
 // get route
 app.get('/all', sendData);
 
